@@ -82,3 +82,61 @@ body {
     white-space: normal !important;
   }
 }
+
+/* link */
+.link {
+  color: $darkBlueColor;
+  text-decoration: none;
+
+  &--dotted {
+    border-bottom: 1px dotted $darkBlueColor;
+  }
+
+  &--new-card {
+    position: relative;
+
+    .arrow {
+      display: none;
+      font-size: 1.4rem;
+      color: $darkBlueColor;
+      position: absolute;
+      top: -5px;
+      right: -20px;
+    }
+
+    &:hover,
+    &:focus {
+      .arrow {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+/* text */
+.text {
+  margin: 0;
+}
+
+/* footer */
+.footer {
+  padding: 2.5rem 0;
+}
+
+.footer__wrapper {
+  text-align: center;
+  @include flex(column, center, center);
+
+  @media screen and (min-width: $largeWidth) {
+    text-align: left;
+    @include flex(row, flex-end, space-between);
+  }
+}
+
+.image-author {
+  margin-bottom: 1.5rem;
+  
+  @media screen and (min-width: $largeWidth) {
+    margin-bottom: 0;
+  }
+}
