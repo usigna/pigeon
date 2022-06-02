@@ -421,26 +421,38 @@ body {
   }
 
   &--dotted {
-    color: $whiteColor;
+    color: $greyColor;
     border-bottom: 1px dotted $whiteColor;
+    transition: color 0.2s;
+
+    &:hover,
+    &:focus {
+      color: $whiteColor;
+    }
   }
 
   &--new-card {
     position: relative;
 
     .arrow {
-      display: none;
+      display: inline-block;
       font-size: 1.4rem;
-      color: $whiteColor;
+      color: $greyColor;
       position: absolute;
       top: -5px;
       right: -20px;
     }
 
-    &:hover,
-    &:focus {
+    @media screen and (min-width: $largeWidth) {
       .arrow {
-        display: inline-block;
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        .arrow {
+          display: inline-block;
+        }
       }
     }
   }
@@ -474,17 +486,12 @@ body {
   padding: 2.5rem 0;
   color: $whiteColor;
   background-color: #18183f;
-  position: relative;
-
-  &::before {
-    content: "";
-  }
 }
 
 .footer__wrapper {
   text-align: center;
   @include flex(column, center, center);
-  opacity: 0.8;
+  color: $greyColor;
 
   @media screen and (min-width: $largeWidth) {
     text-align: left;
