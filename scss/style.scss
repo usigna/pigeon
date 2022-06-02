@@ -19,7 +19,6 @@ body {
   position: relative;
   scroll-behavior: smooth;
   font-size: 62.25%;
-  background-color: #ecf5fe;
 }
 
 body {
@@ -309,7 +308,7 @@ body {
     }
 
     &::after {
-      background-color: $darkBlueColor;
+      background-color: $blueColor;
       transform: scale(0);
       transition: transform 0.2s;
     }
@@ -335,21 +334,46 @@ body {
 }
 
 .text-wrapper{
-  margin-top: 10rem;
-  padding: 3.5rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 25px;
-  margin-bottom: 2.5rem;
+  &--bg {
+    margin-top: 10rem;
+    padding: 3.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    margin-bottom: 2.5rem;
+  
+    @media screen and (min-width: $largeWidth) {
+      margin-top: 0;
+    }
+  }
 
-  @media screen and (min-width: $largeWidth) {
-    margin-top: 0;
+  &--two-cols {
+    text-align: center;
+    @include flex(column, flex-start, center);
+    flex-wrap: wrap;
+
+    .text {
+      margin-bottom: 1.5rem;
+    }
+
+    @media screen and (min-width: $largeWidth) {
+      text-align: left;
+      @include flex(row, flex-end, space-between);
+
+      .text {
+        width: 45%;
+        margin: 0;
+      }
+    }
   }
 }
 
 .title {
+  width: 100%;
+  margin: 0;
+
   &--big {
     font-size: 3rem;
-    color: $darkBlueColor;
+    color: $blueColor;
     text-transform: uppercase;
     margin: 0 0 2rem;
 
@@ -362,11 +386,22 @@ body {
   &--color {
     color: $blackColor;
   }
+
+  &--decoration {
+    width: auto;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+
+    @media screen and (min-width: $largeWidth) {
+      margin-bottom: 2.5rem;
+    }
+  }
 }
 
 /* link */
 .link {
-  color: $darkBlueColor;
+  color: $blueColor;
   text-decoration: none;
 
   &--scroll {
@@ -374,19 +409,20 @@ body {
     text-align: center;
     padding: 2rem 2.5rem;
     color: $whiteColor;
-    background-color: $darkBlueColor;
+    background-color: $blueColor;
     border-radius: 50%;
     transition: color 0.2s, background 0.2s;
 
     &:hover,
     &:focus {
-      color: $darkBlueColor;
+      color: $blueColor;
       background-color: $whiteColor;
     }
   }
 
   &--dotted {
-    border-bottom: 1px dotted $darkBlueColor;
+    color: $whiteColor;
+    border-bottom: 1px dotted $whiteColor;
   }
 
   &--new-card {
@@ -395,7 +431,7 @@ body {
     .arrow {
       display: none;
       font-size: 1.4rem;
-      color: $darkBlueColor;
+      color: $whiteColor;
       position: absolute;
       top: -5px;
       right: -20px;
@@ -419,14 +455,36 @@ body {
   }
 }
 
+/* section */
+.section {
+  padding: 3.5rem 0 5.5rem;
+
+  &--dark {
+    color: $whiteColor;
+    background-color: $darkBlueColor;
+  }
+}
+
+.section__wrapper {
+  @include flex(column, flex-start, flex-start);
+}
+
 /* footer */
 .footer {
   padding: 2.5rem 0;
+  color: $whiteColor;
+  background-color: #18183f;
+  position: relative;
+
+  &::before {
+    content: "";
+  }
 }
 
 .footer__wrapper {
   text-align: center;
   @include flex(column, center, center);
+  opacity: 0.8;
 
   @media screen and (min-width: $largeWidth) {
     text-align: left;
