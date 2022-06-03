@@ -519,6 +519,71 @@ body {
   }
 }
 
+/* boxes */
+.boxes {
+  @include flex(row, flex-start, center);
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 1.5rem 1rem;
+  background-color: $darkBlueColor;
+  border-radius: 25px;
+  color: $whiteColor;
+  @include flex(column, center, center);
+
+  &:nth-of-type(2n + 0) {
+    background-color: $secondDarkBlueColor;
+  }
+
+  @media screen and (min-width: $mediumWidth) {
+    width: 30%;
+    min-width: 350px;
+    margin: 0 1.5rem 4.5rem;
+    padding: 4.5rem;
+  }
+}
+
+.box__image {
+  width: 150px;
+  height: 150px;
+  padding: 2.5rem;
+  background-color: $whiteColor;
+  border-radius: 25px;
+  margin-bottom: 2.5rem;
+  @include flex(row, center, center);
+}
+
+.box__title {
+  display: inline-block;
+  width: auto;
+  text-transform: uppercase;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 30%;
+    height: 5px;
+    background-color: $whiteColor;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    margin-top: -2.5px;
+  }
+
+  &::before {
+    left: 120%;
+  }
+
+  &::after {
+    right: 120%;
+  }
+
+}
+
 /* gallery */
 .gallery { 
   @include flex(column, center, center);
@@ -574,6 +639,19 @@ body {
   }
 }
 
+/* email */
+.email {
+  margin-top: 2rem;
+  &__icon {
+    margin-right: 0.5rem;
+  }
+
+  &__link {
+    color: $whiteColor;
+    border-bottom: 1px dotted $whiteColor;
+  }
+}
+
 /* footer */
 .footer {
   padding: 2.5rem 0;
@@ -585,6 +663,7 @@ body {
   text-align: center;
   @include flex(column, center, center);
   color: $greyColor;
+  padding: 0 1rem;
 
   @media screen and (min-width: $largeWidth) {
     text-align: left;
