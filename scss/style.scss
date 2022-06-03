@@ -192,7 +192,10 @@ body {
   height: auto;
   width: 100%;
   padding: 5rem 0;
-  background-color: #acd3f6;
+  background: rgb(172,210,246);
+  background: -moz-linear-gradient(180deg, rgba(172,210,246,1) 0%, rgba(241,248,254,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(172,210,246,1) 0%, rgba(241,248,254,1) 100%);
+  background: linear-gradient(180deg, rgba(172,210,246,1) 0%, rgba(241,248,254,1) 100%);
   @include flex(column, center, center);
   position: absolute;
   top: 0;
@@ -345,26 +348,6 @@ body {
       margin-top: 0;
     }
   }
-
-  &--two-cols {
-    text-align: center;
-    @include flex(column, flex-start, center);
-    flex-wrap: wrap;
-
-    .text {
-      margin-bottom: 1.5rem;
-    }
-
-    @media screen and (min-width: $largeWidth) {
-      text-align: left;
-      @include flex(row, flex-end, space-between);
-
-      .text {
-        width: 45%;
-        margin: 0;
-      }
-    }
-  }
 }
 
 .title {
@@ -391,12 +374,79 @@ body {
     width: auto;
     text-transform: uppercase;
     font-size: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 30%;
+      height: 5px;
+      background-color: $blueColor;
+      border-radius: 25px;
+      position: absolute;
+      top: 50%;
+      margin-top: -2.5px;
+    }
+
+    &::before {
+      left: 120%;
+    }
+
+    &::after {
+      right: 120%;
+    }
 
     @media screen and (min-width: $largeWidth) {
-      margin-bottom: 2.5rem;
+      margin-bottom: 4.5rem;
+
+      &::before,
+      &::after {
+        width: 50%;
+      }
     }
   }
+
+  &--light-decoration {
+    &::before,
+    &::after {
+      background-color: $whiteColor;
+    }
+  }
+}
+
+/* section */
+.section {
+  padding: 5.5rem 0;
+
+  &--dark {
+    color: $whiteColor;
+    background-color: $darkBlueColor;
+  }
+
+  @media screen and (min-width: $largeWidth) {
+    padding: 5.5rem 0 10.5rem;
+  }
+}
+
+.section__wrapper {
+  @include flex(column, center, center);
+  text-align: center;
+}
+
+/* image */
+.image {
+  margin-bottom: 4.5rem;
+  width: 300px;
+
+  @media screen and (min-width: $mediumWidth) {
+    width: 400px;
+  }
+}
+
+/* button */
+.button-wrapper {
+  margin-top: 4.5rem;
 }
 
 /* link */
@@ -404,19 +454,21 @@ body {
   color: $blueColor;
   text-decoration: none;
 
-  &--scroll {
+  &--fill {
     display: inline-block;
     text-align: center;
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2rem;
     color: $whiteColor;
     background-color: $blueColor;
-    border-radius: 50%;
-    transition: color 0.2s, background 0.2s;
+    border: 2.5px solid transparent;
+    border-radius: 50px;
+    transition: color 0.2s, background 0.2s, border-color 0.2s;
 
     &:hover,
     &:focus {
       color: $blueColor;
       background-color: $whiteColor;
+      border-color: $blueColor;
     }
   }
 
@@ -467,18 +519,59 @@ body {
   }
 }
 
-/* section */
-.section {
-  padding: 3.5rem 0 5.5rem;
+/* gallery */
+.gallery { 
+  @include flex(column, center, center);
+  min-width: 320px;
+  max-width: 500px;
+}
 
-  &--dark {
-    color: $whiteColor;
-    background-color: $darkBlueColor;
+.fullimagecontainer {
+  max-width: 500px;
+  min-height: 300px;
+  @include flex(row, center, center);
+  margin: 0 0.5rem 0.5rem;
+
+  img {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  @media screen and (min-width: $mediumWidth) {
+    margin: 0 0 2.5rem;
   }
 }
 
-.section__wrapper {
-  @include flex(column, flex-start, flex-start);
+.gallery__images {
+  @include flex(row, center, center);
+  flex-wrap: wrap;
+
+  a { 
+    display: block;
+    width: 90px;
+    height: 90px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    margin: 0 5px 5px;
+    @include flex(row, center, center);
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    @media screen and (min-width: $mediumWidth) {
+      width: 100px;
+      height: 100px;
+      margin: 0 0.5rem 0.5rem;
+    }
+  }
+
+  img {
+    width: 100%; 
+    height: auto; 
+  }
 }
 
 /* footer */
