@@ -40,12 +40,15 @@ function useGallery() {
   largeimage.setAttribute('id', 'fullimage');
   largeimagecontainer.appendChild(largeimage);
       
-  for (var i=0; i<links.length; i++) {
+  for (var i=0; i < links.length; i++) {
     links[i].onclick = handler;
   }
-      
-  links[0].focus();
+
   links[0].click();
+
+  links[0].addEventListener('focus', function() {
+    links[0].focus();
+  });
 }
 
 const init = function () {
